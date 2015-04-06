@@ -11,3 +11,10 @@ C:\Users\Leif\Documents\Visual Studio 2013\Projects\LeapTest1\LeapTestWithForm1\
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\bin\Debug\LeapTestWithForm1.exe.config
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.exe
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.pdb
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\bin\Debug\LeapTestWithForm1.exe
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\bin\Debug\LeapTestWithForm1.pdb
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\bin\Debug\LeapCSharp.NET4.0.dll
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.csprojResolveAssemblyReference.cache
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.Form1.resources
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.Properties.Resources.resources
+C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.csproj.GenerateResource.Cache

@@ -35,6 +35,7 @@
             this.Left = new System.Windows.Forms.Label();
             this.Right = new System.Windows.Forms.Label();
             this.Fire = new System.Windows.Forms.Label();
+            this.SerialLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,6 +43,7 @@
             // 
             this.LeapLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.LeapLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LeapLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LeapLabel.Location = new System.Drawing.Point(12, 9);
             this.LeapLabel.Name = "LeapLabel";
             this.LeapLabel.Size = new System.Drawing.Size(236, 240);
@@ -129,11 +131,23 @@
             this.Fire.Text = "Fire";
             this.Fire.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // SerialLabel
+            // 
+            this.SerialLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.SerialLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SerialLabel.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SerialLabel.Location = new System.Drawing.Point(12, 481);
+            this.SerialLabel.Name = "SerialLabel";
+            this.SerialLabel.Size = new System.Drawing.Size(221, 22);
+            this.SerialLabel.TabIndex = 7;
+            this.SerialLabel.Text = "Info";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 519);
+            this.Controls.Add(this.SerialLabel);
             this.Controls.Add(this.Fire);
             this.Controls.Add(this.Right);
             this.Controls.Add(this.Left);
@@ -157,6 +171,7 @@
         private System.Windows.Forms.Label Left;
         private System.Windows.Forms.Label Right;
         private System.Windows.Forms.Label Fire;
+        private System.Windows.Forms.Label SerialLabel;
     }
 }
 

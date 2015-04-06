@@ -12,9 +12,9 @@ namespace LeapTestWithForm1
     {
         private Controller controller = new Controller();
 
-        public float X { get; private set; }
-        public float Y { get; private set; }
-        public float Z { get; private set; }
+        public float posX { get; private set; }
+        public float posY { get; private set; }
+        public float posZ { get; private set; }
 
         public float velX { get; private set; }
         public float velY { get; private set; }
@@ -22,35 +22,37 @@ namespace LeapTestWithForm1
 
         public float pinch { get; private set; }
 
+        public string info { get; private set; }
+
         public LeapStuff()
         {
             //controller.EnableGesture(Gesture.GestureType.;
         }
 
-        internal string GetInfo()
-        {
+        internal void Update()
+        {        
             Frame frame = controller.Frame();
 
-            string temp = "Connected: " + controller.IsConnected + "\n" +
-                          "Frame ID: " + frame.Id + "\n" +
-                          "Hands: " + frame.Hands.Count + "\n" +
-                          "Fingers: " + frame.Fingers.Count + "\n\n";
+            info = "Connected: " + controller.IsConnected + "\n" +
+                   "Frame ID: " + frame.Id + "\n" +
+                   "Hands: " + frame.Hands.Count + "\n" +
+                   "Fingers: " + frame.Fingers.Count + "\n\n";
 
             if (frame.Hands.Count == 1)
             {
-                temp += "Hand #1 Position X:" + frame.Hands[0].PalmPosition.x + "\n";
-                temp += "Hand #1 Position Y:" + frame.Hands[0].PalmPosition.y + "\n";
-                temp += "Hand #1 Position Z:" + frame.Hands[0].PalmPosition.z + "\n\n";
+                info += "Hand #1 Position X:" + frame.Hands[0].PalmPosition.x + "\n";
+                info += "Hand #1 Position Y:" + frame.Hands[0].PalmPosition.y + "\n";
+                info += "Hand #1 Position Z:" + frame.Hands[0].PalmPosition.z + "\n\n";
 
-                temp += "Hand #1 Velocity X:" + frame.Hands[0].PalmVelocity.x + "\n";
-                temp += "Hand #1 Velocity Y:" + frame.Hands[0].PalmVelocity.y + "\n";
-                temp += "Hand #1 Velocity Z:" + frame.Hands[0].PalmVelocity.z + "\n";
+                info += "Hand #1 Velocity X:" + frame.Hands[0].PalmVelocity.x + "\n";
+                info += "Hand #1 Velocity Y:" + frame.Hands[0].PalmVelocity.y + "\n";
+                info += "Hand #1 Velocity Z:" + frame.Hands[0].PalmVelocity.z + "\n";
 
-                temp += "Hand #1 Pinch:" + frame.Hands[0].PinchStrength + "\n";
+                info += "Hand #1 Pinch:" + frame.Hands[0].PinchStrength + "\n";
 
-                X = frame.Hands[0].PalmPosition.x;
-                Y = frame.Hands[0].PalmPosition.y;
-                Z = frame.Hands[0].PalmPosition.z;
+                posX = frame.Hands[0].PalmPosition.x;
+                posY = frame.Hands[0].PalmPosition.y;
+                posZ = frame.Hands[0].PalmPosition.z;
 
                 velX = frame.Hands[0].PalmVelocity.x;
                 velY = frame.Hands[0].PalmVelocity.y;
@@ -65,8 +67,6 @@ namespace LeapTestWithForm1
                 velZ = 0;
                 pinch = 0;
             }
-
-            return temp;
         }
     }
 }
