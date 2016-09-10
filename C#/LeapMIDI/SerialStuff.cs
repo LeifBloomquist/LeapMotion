@@ -3,7 +3,7 @@ using System.IO.Ports;
 
 using Leap;
 
-namespace LeapTestWithForm1
+namespace LeapMIDI
 {
     class SerialStuff
     {

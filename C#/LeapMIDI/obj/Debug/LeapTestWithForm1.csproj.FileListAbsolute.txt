@@ -18,3 +18,6 @@ C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.cspro
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.Properties.Resources.resources
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.csproj.GenerateResource.Cache
 C:\Leif\GitHub\LeapMotion\C#\LeapTestWithForm1\obj\Debug\LeapTestWithForm1.MainForm.resources
+C:\Leif\GitHub\LeapMotion\C#\LeapMIDI\bin\Debug\LeapTestWithForm1.exe.config
+C:\Leif\GitHub\LeapMotion\C#\LeapMIDI\obj\Debug\LeapTestWithForm1.exe
+C:\Leif\GitHub\LeapMotion\C#\LeapMIDI\obj\Debug\LeapTestWithForm1.pdb
