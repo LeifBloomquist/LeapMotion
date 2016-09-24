@@ -120,6 +120,7 @@
       this.MinimizeBox = false;
       this.Name = "MainForm";
       this.Text = "LEAP Motion Virtual Input Device";
+      this.TopMost = true;
       this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
       this.Paint += new System.Windows.Forms.PaintEventHandler(this.MainForm_Paint);
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
