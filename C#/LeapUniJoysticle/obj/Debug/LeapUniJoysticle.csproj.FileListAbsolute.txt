@@ -1,0 +1,9 @@
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\bin\Debug\LeapUniJoysticle.exe.config
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\bin\Debug\LeapUniJoysticle.exe
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\bin\Debug\LeapUniJoysticle.pdb
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\bin\Debug\LeapCSharp.NET4.0.dll
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\obj\Debug\LeapUniJoysticle.Properties.Resources.resources
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\obj\Debug\LeapUniJoysticle.csproj.GenerateResource.Cache
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\obj\Debug\LeapUniJoysticle.exe
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\obj\Debug\LeapUniJoysticle.pdb
+C:\Leif\GitHub\LeapMotion\C#\LeapUniJoysticle\obj\Debug\LeapUniJoysticle.MainForm.resources
