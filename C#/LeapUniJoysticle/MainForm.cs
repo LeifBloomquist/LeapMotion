@@ -11,6 +11,11 @@ using System.Windows.Forms;
 
 namespace LeapUniJoysticle
 {
+     struct motions
+     {
+       
+     }
+
     public partial class MainForm : Form
     {
         LeapStuff leap = new LeapStuff();
@@ -23,7 +28,7 @@ namespace LeapUniJoysticle
         Pen greenPen = new Pen(System.Drawing.Color.Green, 5);
         Pen bluePen = new Pen(System.Drawing.Color.LightBlue, 5);
 
-        int activePort = 0;
+        byte activePort = 0;
 
         float tempx, tempy, tempz;
 
@@ -51,6 +56,9 @@ namespace LeapUniJoysticle
         {
             leap.Update();
             LeapLabel.Text = leap.info;
+            Hand0InfoLabel.Text = leap.hands[0].info;
+            Hand1InfoLabel.Text = leap.hands[1].info;
+
             Animate();
             DoJoystick();
         }
@@ -70,18 +78,20 @@ namespace LeapUniJoysticle
 
           foreach (myHand hand in leap.hands)
           {
-            if (hand.which == 0)
+            if (hand.isLeft)
             {
               pos_pen = redPen;
               vel_pen = yellowPen;
             }
-
-            if (hand.which == 1)
+            else if (hand.isRight)
             {
               pos_pen = greenPen;
               vel_pen = bluePen;
             }
-
+            else // ?
+            {
+              return;
+            }
 
             // Position
 
@@ -113,71 +123,121 @@ namespace LeapUniJoysticle
           {
             return;
           }
+                    
+          var motion = new byte[2] {0,0};
 
-          float threshold = 200f;
-
-
-          foreach (myHand hand in leap.hands)
+          if (activePort == 1)
           {
-            bool up = false, down = false, left = false, right = false, fire = false;
-            
-            if (hand.velX < -threshold) left = true;
-            if (hand.velX > +threshold) right = true;
-            if (hand.velY < -threshold) down = true;
-            if (hand.velY > +threshold) up = true;
-            if (hand.pinch > +0.70) fire = true;
+            if (leap.numHands == 1)
+            {
+              motion[0] = getMotions(leap.hands[0]);
+            }
+            else
+            {
+              motion[0] = 0;
+            }             
+          }
+          else if (activePort == 2)
+          {
+            if (leap.numHands == 1)
+            {
+              motion[1] = getMotions(leap.hands[0]);                
+            }
+            else
+            {
+              motion[1] = 0;
+            }              
+          }
 
-            toggle(Up, up);
-            toggle(Down, down);
-            toggle(Left, left);
-            toggle(Right, right);
-            toggle(Fire, fire, Color.Red);
-
-            byte motion = 0x00;
-
-            if (up) motion |= 0x01;
-            if (down) motion |= 0x02;
-            if (left) motion |= 0x04;
-            if (right) motion |= 0x08;
-            if (fire) motion |= 0x10;
-
-            // UniJoysticle Protocol V1
-            byte[] packet = new byte[2];
-            packet[0] = (byte)hand.which;
-            packet[1] = motion;
-
-            udp.sendData(packet);
-            SerialLabel.Text = "Sending: " + BitConverter.ToString(packet);
+          else if (activePort == 3)
+          {
+            if (leap.numHands == 0)
+            {
+              motion[0] = 0;
+              motion[1] = 0;
+            }
+            if (leap.numHands == 1)
+            {
+              if (leap.hands[0].isLeft)
+              {
+                motion[0] = getMotions(leap.hands[0]);
+                motion[1] = 0;
+              }
+              else if (leap.hands[0].isRight)
+              {
+                motion[0] = 0;
+                motion[1] = getMotions(leap.hands[0]);
+              }  
+              else
+              {
+                motion[0] = 0;
+                motion[1] = 0;
+              }
+            }
+            else if (leap.numHands == 2)
+            {
+              motion[0] = getMotions(leap.hands[0]);  // Always leftmost
+              motion[1] = getMotions(leap.hands[1]);  // Always rightmost
+            }
+            else
+            {
+              motion[0] = 0;
+              motion[1] = 0;
+            }
+          }
+          else  // Invalid config.
+          {
+            return;
           }
 
           /*
-           * 
-           *  if ((activePort & 0x01) == 0x01)
-          {
-            packet[0] = 0;       // Port 0, Joystick Mode
-            packet[1] = motion;
-            udp.sendData(packet);
-          }
-
-          if ((activePort & 0x02) == 0x02)
-          {
-            packet[0] = 1;       // Port 1, Joystick Mode
-            packet[1] = motion;
-            udp.sendData(packet);
-          }
+          // UniJoysticle Protocol V1
+          byte[] packet = new byte[2];
+          packet[0] = (byte)hand.which;
+          packet[1] = motion;
+          udp.sendData(packet);          
+           */
           
-         // UniJoysticle Protocol V2
-         byte[] packet = new byte[4];
+          // UniJoysticle Protocol V2
+          byte[] packet = new byte[4];
+          packet[0] = 2;                 // V2
+          packet[1] = activePort; 
+          packet[2] = motion[0];
+          packet[3] = motion[1];
+          udp.sendData(packet);
 
-         packet[0] = 2;       // Version 2
-         packet[1] = 1;       // Port 1
-         packet[2] = motion;
-         packet[3] = motion;
-          */
-
-
-
+          SerialLabel.Text = "Sending: " + BitConverter.ToString(packet);
         }
+
+        
+        private byte getMotions(myHand hand)
+        {
+          const float threshold = 200f;
+
+          byte temp=0;
+          bool up = false, down = false, left = false, right = false, fire = false;
+
+          if (hand.velX < -threshold) left = true;
+          if (hand.velX > +threshold) right = true;
+          if (hand.velY < -threshold) down = true;
+          if (hand.velY > +threshold) up = true;
+          if (hand.pinch > +0.70) fire = true;
+
+          toggle(Up, up);
+          toggle(Down, down);
+          toggle(Left, left);
+          toggle(Right, right);
+          toggle(Fire, fire, Color.Red);
+
+          if (up) temp |= 0x01;
+          if (down) temp |= 0x02;
+          if (left) temp |= 0x04;
+          if (right) temp |= 0x08;
+          if (fire) temp |= 0x10;
+
+          return temp;
+        }
+
 
         private void toggle(Control c, Boolean state, Color color)
         {

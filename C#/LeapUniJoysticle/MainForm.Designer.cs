@@ -36,9 +36,10 @@
       this.Right = new System.Windows.Forms.Label();
       this.Fire = new System.Windows.Forms.Label();
       this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-      this.PortName = new System.Windows.Forms.ToolStripStatusLabel();
       this.SerialLabel = new System.Windows.Forms.ToolStripStatusLabel();
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.Hand1InfoLabel = new System.Windows.Forms.Label();
+      this.Hand0InfoLabel = new System.Windows.Forms.Label();
       this.Joystick = new System.Windows.Forms.GroupBox();
       this.JoystickPort1Button = new System.Windows.Forms.Button();
       this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,10 +49,8 @@
       this.label4 = new System.Windows.Forms.Label();
       this.label5 = new System.Windows.Forms.Label();
       this.groupBox3 = new System.Windows.Forms.GroupBox();
-      this.JoystickPort2Button = new System.Windows.Forms.Button();
       this.JoystickBothPortsButton = new System.Windows.Forms.Button();
-      this.label6 = new System.Windows.Forms.Label();
-      this.label7 = new System.Windows.Forms.Label();
+      this.JoystickPort2Button = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
       this.statusStrip1.SuspendLayout();
       this.groupBox1.SuspendLayout();
@@ -65,9 +64,9 @@
       this.LeapLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
       this.LeapLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
       this.LeapLabel.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.LeapLabel.Location = new System.Drawing.Point(12, 16);
+      this.LeapLabel.Location = new System.Drawing.Point(6, 16);
       this.LeapLabel.Name = "LeapLabel";
-      this.LeapLabel.Size = new System.Drawing.Size(245, 86);
+      this.LeapLabel.Size = new System.Drawing.Size(245, 55);
       this.LeapLabel.TabIndex = 0;
       this.LeapLabel.Text = "Info";
       // 
@@ -155,26 +154,12 @@
       // statusStrip1
       // 
       this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.PortName,
             this.SerialLabel});
       this.statusStrip1.Location = new System.Drawing.Point(0, 662);
       this.statusStrip1.Name = "statusStrip1";
-      this.statusStrip1.Size = new System.Drawing.Size(918, 24);
+      this.statusStrip1.Size = new System.Drawing.Size(966, 24);
       this.statusStrip1.TabIndex = 7;
       this.statusStrip1.Text = "statusStrip1";
-      // 
-      // PortName
-      // 
-      this.PortName.BorderSides = ((System.Windows.Forms.ToolStripStatusLabelBorderSides)((((System.Windows.Forms.ToolStripStatusLabelBorderSides.Left | System.Windows.Forms.ToolStripStatusLabelBorderSides.Top) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Right) 
-            | System.Windows.Forms.ToolStripStatusLabelBorderSides.Bottom)));
-      this.PortName.BorderStyle = System.Windows.Forms.Border3DStyle.SunkenOuter;
-      this.PortName.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-      this.PortName.Name = "PortName";
-      this.PortName.Padding = new System.Windows.Forms.Padding(100, 0, 0, 0);
-      this.PortName.Size = new System.Drawing.Size(126, 19);
-      this.PortName.Text = "---";
-      this.PortName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // SerialLabel
       // 
@@ -190,17 +175,40 @@
       // 
       // groupBox1
       // 
+      this.groupBox1.Controls.Add(this.Hand1InfoLabel);
+      this.groupBox1.Controls.Add(this.Hand0InfoLabel);
       this.groupBox1.Controls.Add(this.LeapLabel);
       this.groupBox1.Location = new System.Drawing.Point(10, 354);
       this.groupBox1.Name = "groupBox1";
-      this.groupBox1.Size = new System.Drawing.Size(263, 305);
+      this.groupBox1.Size = new System.Drawing.Size(263, 227);
       this.groupBox1.TabIndex = 8;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Info";
       // 
+      // Hand1InfoLabel
+      // 
+      this.Hand1InfoLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.Hand1InfoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.Hand1InfoLabel.Font = new System.Drawing.Font("Consolas", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Hand1InfoLabel.Location = new System.Drawing.Point(125, 77);
+      this.Hand1InfoLabel.Name = "Hand1InfoLabel";
+      this.Hand1InfoLabel.Size = new System.Drawing.Size(126, 134);
+      this.Hand1InfoLabel.TabIndex = 0;
+      this.Hand1InfoLabel.Text = "Info";
+      // 
+      // Hand0InfoLabel
+      // 
+      this.Hand0InfoLabel.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+      this.Hand0InfoLabel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+      this.Hand0InfoLabel.Font = new System.Drawing.Font("Consolas", 6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.Hand0InfoLabel.Location = new System.Drawing.Point(6, 77);
+      this.Hand0InfoLabel.Name = "Hand0InfoLabel";
+      this.Hand0InfoLabel.Size = new System.Drawing.Size(113, 134);
+      this.Hand0InfoLabel.TabIndex = 0;
+      this.Hand0InfoLabel.Text = "Info";
+      // 
       // Joystick
       // 
-      this.Joystick.Controls.Add(this.label6);
       this.Joystick.Controls.Add(this.Right);
       this.Joystick.Controls.Add(this.Up);
       this.Joystick.Controls.Add(this.Down);
@@ -208,7 +216,7 @@
       this.Joystick.Controls.Add(this.Left);
       this.Joystick.Location = new System.Drawing.Point(279, 356);
       this.Joystick.Name = "Joystick";
-      this.Joystick.Size = new System.Drawing.Size(205, 303);
+      this.Joystick.Size = new System.Drawing.Size(205, 198);
       this.Joystick.TabIndex = 9;
       this.Joystick.TabStop = false;
       this.Joystick.Text = "Joystick 1";
@@ -217,17 +225,16 @@
       // 
       this.JoystickPort1Button.BackColor = System.Drawing.SystemColors.Control;
       this.JoystickPort1Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.JoystickPort1Button.Location = new System.Drawing.Point(18, 37);
+      this.JoystickPort1Button.Location = new System.Drawing.Point(6, 28);
       this.JoystickPort1Button.Name = "JoystickPort1Button";
-      this.JoystickPort1Button.Size = new System.Drawing.Size(171, 41);
+      this.JoystickPort1Button.Size = new System.Drawing.Size(98, 41);
       this.JoystickPort1Button.TabIndex = 11;
-      this.JoystickPort1Button.Text = "Joystick Port 1 Only";
+      this.JoystickPort1Button.Text = "Port 1 Only\r\n(Single Hand)";
       this.JoystickPort1Button.UseVisualStyleBackColor = false;
       this.JoystickPort1Button.Click += new System.EventHandler(this.JoystickPort1Button_Click);
       // 
       // groupBox2
       // 
-      this.groupBox2.Controls.Add(this.label7);
       this.groupBox2.Controls.Add(this.label1);
       this.groupBox2.Controls.Add(this.label2);
       this.groupBox2.Controls.Add(this.label3);
@@ -236,7 +243,7 @@
       this.groupBox2.Enabled = false;
       this.groupBox2.Location = new System.Drawing.Point(490, 356);
       this.groupBox2.Name = "groupBox2";
-      this.groupBox2.Size = new System.Drawing.Size(205, 303);
+      this.groupBox2.Size = new System.Drawing.Size(205, 198);
       this.groupBox2.TabIndex = 12;
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Joystick 2";
@@ -318,62 +325,40 @@
       this.groupBox3.Controls.Add(this.JoystickPort1Button);
       this.groupBox3.Location = new System.Drawing.Point(701, 356);
       this.groupBox3.Name = "groupBox3";
-      this.groupBox3.Size = new System.Drawing.Size(205, 214);
+      this.groupBox3.Size = new System.Drawing.Size(217, 134);
       this.groupBox3.TabIndex = 12;
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "Joystick Mode";
-      // 
-      // JoystickPort2Button
-      // 
-      this.JoystickPort2Button.BackColor = System.Drawing.SystemColors.Control;
-      this.JoystickPort2Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.JoystickPort2Button.Location = new System.Drawing.Point(18, 93);
-      this.JoystickPort2Button.Name = "JoystickPort2Button";
-      this.JoystickPort2Button.Size = new System.Drawing.Size(171, 41);
-      this.JoystickPort2Button.TabIndex = 11;
-      this.JoystickPort2Button.Text = "Joystick Port 2 Only";
-      this.JoystickPort2Button.UseVisualStyleBackColor = false;
-      this.JoystickPort2Button.Click += new System.EventHandler(this.JoystickPort2Button_Click);
       // 
       // JoystickBothPortsButton
       // 
       this.JoystickBothPortsButton.BackColor = System.Drawing.SystemColors.Control;
       this.JoystickBothPortsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.JoystickBothPortsButton.Location = new System.Drawing.Point(18, 149);
+      this.JoystickBothPortsButton.Location = new System.Drawing.Point(6, 75);
       this.JoystickBothPortsButton.Name = "JoystickBothPortsButton";
-      this.JoystickBothPortsButton.Size = new System.Drawing.Size(171, 41);
+      this.JoystickBothPortsButton.Size = new System.Drawing.Size(202, 41);
       this.JoystickBothPortsButton.TabIndex = 11;
-      this.JoystickBothPortsButton.Text = "Joystick Port 1 and 2";
+      this.JoystickBothPortsButton.Text = "Joystick Port 1 and 2\r\n(Both Hands)";
       this.JoystickBothPortsButton.UseVisualStyleBackColor = false;
       this.JoystickBothPortsButton.Click += new System.EventHandler(this.JoystickBothPortsButton_Click);
       // 
-      // label6
+      // JoystickPort2Button
       // 
-      this.label6.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.label6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.label6.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label6.Location = new System.Drawing.Point(6, 232);
-      this.label6.Name = "label6";
-      this.label6.Size = new System.Drawing.Size(193, 41);
-      this.label6.TabIndex = 7;
-      this.label6.Text = "Info";
-      // 
-      // label7
-      // 
-      this.label7.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-      this.label7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-      this.label7.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-      this.label7.Location = new System.Drawing.Point(6, 232);
-      this.label7.Name = "label7";
-      this.label7.Size = new System.Drawing.Size(183, 41);
-      this.label7.TabIndex = 8;
-      this.label7.Text = "Info";
+      this.JoystickPort2Button.BackColor = System.Drawing.SystemColors.Control;
+      this.JoystickPort2Button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+      this.JoystickPort2Button.Location = new System.Drawing.Point(110, 28);
+      this.JoystickPort2Button.Name = "JoystickPort2Button";
+      this.JoystickPort2Button.Size = new System.Drawing.Size(98, 41);
+      this.JoystickPort2Button.TabIndex = 11;
+      this.JoystickPort2Button.Text = "Port 2 Only\r\n(Single Hand)";
+      this.JoystickPort2Button.UseVisualStyleBackColor = false;
+      this.JoystickPort2Button.Click += new System.EventHandler(this.JoystickPort2Button_Click);
       // 
       // MainForm
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(918, 686);
+      this.ClientSize = new System.Drawing.Size(966, 686);
       this.Controls.Add(this.groupBox3);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.Joystick);
@@ -408,7 +393,6 @@
         private System.Windows.Forms.Label Right;
         private System.Windows.Forms.Label Fire;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel PortName;
         private System.Windows.Forms.ToolStripStatusLabel SerialLabel;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox Joystick;
@@ -422,8 +406,8 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.Button JoystickPort2Button;
         private System.Windows.Forms.Button JoystickBothPortsButton;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label Hand1InfoLabel;
+        private System.Windows.Forms.Label Hand0InfoLabel;
     }
 }
 

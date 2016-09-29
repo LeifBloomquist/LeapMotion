@@ -20,16 +20,19 @@ namespace LeapUniJoysticle
 
     public float pinch { get; private set; }
 
+    public bool isLeft { get;  private set; }
+    public bool isRight { get; private set; }
+
     public string info { get;  private set; }
-    public int which { get; private set; }
 
-    
-
-    internal void Update(int which, Hand hand)
+    public myHand()
     {
-      this.which = which;
-
-      info = "Hand #" + which  + "\n";  
+       
+    }
+    
+    internal void Update(Hand hand)
+    {
+      info = "Hand (" + (isLeft ? "Left" : "Right") +")\n";  
       info += "Position X:" + hand.PalmPosition.x + "\n";
       info += "Position Y:" + hand.PalmPosition.y + "\n";
       info += "Position Z:" + hand.PalmPosition.z + "\n\n";
@@ -49,6 +52,9 @@ namespace LeapUniJoysticle
       velZ = hand.PalmVelocity.z;
 
       pinch = hand.PinchStrength;
+
+      isLeft = hand.IsLeft;
+      isRight = hand.IsRight;
     }       
   }
 
@@ -56,33 +62,44 @@ namespace LeapUniJoysticle
   class LeapStuff
   {
     public string info { get; private set; }
+    public int numHands { get; private set; }
 
     private Controller controller = new Controller();
-    public myHand[] hands = null;
+    public myHand[] hands = new myHand[2];
 
     public LeapStuff()
     {
       //controller.EnableGesture(Gesture.GestureType.;
+      hands[0] = new myHand();
+      hands[1] = new myHand();
     }
 
     internal void Update()
     {
       Frame frame = controller.Frame();
 
-      frame.Hands.Rightmost
-
       info = "Connected: " + controller.IsConnected + "\n" +
               "Frame ID: " + frame.Id + "\n" +
               "Hands: " + frame.Hands.Count + "\n" +
               "Fingers: " + frame.Fingers.Count + "\n\n";
 
-      hands = new myHand[frame.Hands.Count];
+      numHands = frame.Hands.Count;
 
-      for (int hand = 0; hand < frame.Hands.Count; hand++)
+      switch (numHands)
       {
-        myHand current = new myHand();
-        current.Update(hand, frame.Hands[hand]);
-        hands[hand] = current;
+        case 0: return;
+
+        case 1: 
+          hands[0].Update(frame.Hands[0]);          // If only one hand, it is always Hand 0 
+          break;
+
+         case 2: 
+          hands[0].Update(frame.Hands.Leftmost);   // If two hands, left is always 0 and right is always 1
+          hands[1].Update(frame.Hands.Rightmost);  // (workaround for situation when right hand is seen first)
+          break;
+
+        default:   // Just in case...
+          return;
       }
     }
   }
