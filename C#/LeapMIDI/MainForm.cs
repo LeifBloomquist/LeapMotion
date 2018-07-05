@@ -83,12 +83,17 @@ namespace LeapMIDI
             float vel_temp = leap.velX*leap.velX + leap.velY*leap.velY + leap.velZ*leap.velZ;
             float velocity = (float)Math.Sqrt((double)vel_temp);
 
-            int modx = midi.ValueToMIDI(leap.posY, 0, 500);
-            int mody = midi.ValueToMIDI(leap.posZ, -50, 200);
+            int modx = midi.ValueToMIDI(leap.posX, -200, 200);
+            int mody = midi.ValueToMIDI(leap.posY, 0, 500);
+            int modz = midi.ValueToMIDI(leap.posZ, -200, 200);
+            int pinch = midi.ValueToMIDI(leap.pinch , 0f, 1f);
+
             midi.SendMIDI(ChannelCommand.Controller, 0, 1, modx);
             midi.SendMIDI(ChannelCommand.Controller, 0, 2, mody);
+            midi.SendMIDI(ChannelCommand.Controller, 0, 3, modz);
+            midi.SendMIDI(ChannelCommand.Controller, 0, 4, pinch);
 
-            if (velocity >= threshold)
+            if (false) // velocity >= threshold)
             {
                int note = midi.ValueToMIDI(leap.posX, -250, +300);
                int vel = midi.ValueToMIDI(velocity, 200, 800);

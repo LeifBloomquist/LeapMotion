@@ -27,6 +27,7 @@ namespace LeapMIDI
         public LeapStuff()
         {
             //controller.EnableGesture(Gesture.GestureType.;
+            controller.SetPolicy(Controller.PolicyFlag.POLICY_BACKGROUND_FRAMES);
         }
 
         internal void Update()
